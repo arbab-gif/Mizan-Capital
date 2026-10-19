@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Mizan Capital design tokens (from Figma "Mizan Capital" file).
+ * Use these via Tailwind utilities, e.g. `bg-primary`, `text-gold`, `font-display`.
+ */
+@theme {
+  /* Brand colors */
+  --color-primary: #012a1c;
+  --color-gold: #b77c00;
+  --color-cream: #f4efe4;
+  --color-cream-light: #f9f6ef;
+  --color-cream-card: #faf7f3;
+  --color-sand: #f0ebde;
+  --color-forest: #0d3e26;
+  --color-tan: #c8a97e;
+  --color-tan-line: #dccaae;
+  --color-timeline: #f2ead9;
+  --color-chart-grid: #dcdfe4;
+  --color-chart-border: #e9edee;
+  --color-chart-label: #51595a;
+  --color-chart-axis: #667085;
+  --color-footer-link: #5c625c;
+  --color-footer-muted: #7d7d7d;
+
+  /* Beige palette (client feedback: replace the mustard gold with lighter beiges) */
+  --color-beige: #d6c29e; /* accents, bars, outlines */
+  --color-beige-btn: #c4aa7e; /* secondary buttons, logo tile */
+  --color-beige-ink: #bfa477; /* beige text / big numbers on white */
+  --color-beige-bg: #efe6d3; /* full-bleed section background */
+  --color-warm-ink: #302b23; /* eyebrow pills, footer headings */
+  --color-warm-muted: #797164; /* footer links */
+
+  /* Typography */
+  --font-sans: var(--font-creato), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-ivar), Georgia, serif;
+  --font-logo: var(--font-playfair), Georgia, serif;
+  --font-store: -apple-system, "SF Pro Display", "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Layout */
+  --container-site: 1240px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+html {
+  scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Dots travelling along flow-diagram connectors */
+@keyframes flowX {
+  from {
+    left: 0;
+  }
+  to {
+    left: 100%;
+  }
+}
+@keyframes flowY {
+  from {
+    top: 0;
+  }
+  to {
+    top: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Range slider: dark green fill up to --fill, light track after, round green thumb. */
+.range-slider {
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  background: linear-gradient(
+    to right,
+    var(--color-primary) 0 var(--fill, 50%),
+    #ececec var(--fill, 50%) 100%
+  );
+}
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  border: 0;
+  transition: transform 0.15s;
+}
+.range-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--color-primary);
+  border: 0;
+}
+.range-slider:hover::-webkit-slider-thumb,
+.range-slider:focus-visible::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+.range-slider:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 6px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-primary);
+  font-family: var(--font-sans);
 }
