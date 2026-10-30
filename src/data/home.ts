@@ -8,7 +8,7 @@ export const navLinks = [
   { label: "Real Estate", href: "/real-estate" },
   { label: "Community", href: "/community" },
   { label: "Nonprofit", href: "/nonprofit" },
-  { label: "FAQ’s", href: "#faqs" },
+  { label: "FAQ’s", href: "/faq" },
 ];
 
 export const heroContent = {
@@ -199,7 +199,7 @@ export const footerColumns = [
   {
     title: "Support",
     links: [
-      { label: "FAQs", href: "#faqs" },
+      { label: "FAQs", href: "/faq" },
       { label: "Contact Us", href: "#contact" },
     ],
   },

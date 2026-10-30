@@ -54,6 +54,38 @@ const PATHS: Record<string, React.ReactNode> = {
       <path d="M3.5 6.5l8.5 6.5 8.5-6.5" />
     </>
   ),
+  calendar: (
+    <>
+      <rect x="3.5" y="5" width="17" height="15" rx="2" />
+      <path d="M3.5 9.5h17M8 3v4M16 3v4" />
+    </>
+  ),
+  food: <path d="M7 3v8M4.5 3v5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 21V3c-2.5 1.5-3.5 4-3.5 7.5V13H17" />,
+  dumbbell: <path d="M6.5 8v8M17.5 8v8M3.5 10v4M20.5 10v4M6.5 12h11" />,
+  shirt: <path d="M8.5 3.5 4 6l1.8 4 2.2-1V20h8V9l2.2 1L20 6l-4.5-2.5a3.5 3.5 0 0 1-7 0z" />,
+  briefcase: (
+    <>
+      <rect x="3.5" y="7" width="17" height="12.5" rx="2" />
+      <path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7M3.5 12.5h17" />
+    </>
+  ),
+  phone: (
+    <>
+      <rect x="7" y="3" width="10" height="18" rx="2" />
+      <path d="M11 17.5h2" />
+    </>
+  ),
+  card: (
+    <>
+      <rect x="3" y="5.5" width="18" height="13" rx="2" />
+      <path d="M3 10h18M7 15h3" />
+    </>
+  ),
+  box: <path d="M12 3 4 7v10l8 4 8-4V7zM4 7l8 4 8-4M12 11v10" />,
+  laptop: <path d="M5 6.5h14v9H5zM3 18.5h18" />,
+  split: <path d="M12 21v-7M12 14 6 8M12 14l6-6M6 8V4M6 4H2.5M18 8V4M18 4h3.5" />,
+  bag: <path d="M5 8h14l-1 12H6zM9 8V6.5a3 3 0 0 1 6 0V8" />,
+  bolt:<path d="M13 3 5 13.5h6L10 21l8-10.5h-6z" />,
   gift: (
     <>
       <rect x="3.5" y="8.5" width="17" height="4" rx="1" />

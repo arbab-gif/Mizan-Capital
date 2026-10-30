@@ -105,3 +105,187 @@ export const involvement = {
     "Building lasting community institutions takes people with experience, relationships, and a willingness to help. Whatever you bring, there is a role for you.",
   roles: ["Educators", "Business owners", "Contractors", "Nonprofit leaders", "Community members"],
 };
+
+/**
+ * Gift comparison (one-time donation vs. endowment gift). ILLUSTRATIVE: assumes the endowment
+ * earns `rate` a year and pays all of it out to the initiative. Confirm the rate with the client.
+ */
+export const giftModel = {
+  rate: 0.1,
+  years: 10,
+  min: 100,
+  max: 10000,
+  default: 1000,
+};
+
+/** Who can get involved, and what each role actually does. */
+// Role details (tasks, commitment, where) are DRAFT copy for client review.
+export const involvementRoles = [
+  {
+    id: "educators",
+    title: "Educators",
+    icon: "book",
+    body: "Teach, design curriculum, or mentor students in our after-school program.",
+    headline: "Shape the next generation's foundation in faith.",
+    tasks: ["Teach or assist in after-school classes", "Help design and review the curriculum", "Mentor students one-on-one"],
+    commitment: "2–4 hrs a week",
+    where: "In person · Dayton",
+    cta: "Join as an educator",
+  },
+  {
+    id: "business",
+    title: "Business owners",
+    icon: "store",
+    body: "Sponsor an initiative, offer jobs, or share space and services.",
+    headline: "Put your business behind the community it serves.",
+    tasks: ["Sponsor an initiative or an event", "Offer jobs or internships to program participants", "Share space, products, or services"],
+    commitment: "Flexible",
+    where: "Your business",
+    cta: "Partner as a business",
+  },
+  {
+    id: "contractors",
+    title: "Contractors",
+    icon: "home",
+    body: "Help renovate masjids and housing at fair, community rates.",
+    headline: "Build the places our community gathers and lives.",
+    tasks: ["Bid on masjid and housing renovations", "Offer fair, community rates", "Advise on scope, budgets, and timelines"],
+    commitment: "Per project",
+    where: "On site · Greater Dayton",
+    cta: "Work with us on a project",
+  },
+  {
+    id: "nonprofits",
+    title: "Nonprofit leaders",
+    icon: "users",
+    body: "Partner on a program, or bring your initiative to the endowment model.",
+    headline: "Turn your program into something that lasts.",
+    tasks: ["Partner with us on an existing program", "Bring your initiative to the endowment model", "Share outcomes with the community"],
+    commitment: "Ongoing partnership",
+    where: "Hybrid",
+    cta: "Bring your initiative",
+  },
+  {
+    id: "community",
+    title: "Community members",
+    icon: "heart",
+    body: "Volunteer, spread the word, or give monthly toward an endowment.",
+    headline: "Every hand and every dollar keeps it going.",
+    tasks: ["Volunteer at events and drives", "Give monthly toward an endowment", "Spread the word to family and friends"],
+    commitment: "Whatever you can give",
+    where: "Anywhere",
+    cta: "Get involved",
+  },
+];
+
+/** "The bigger vision" roadmap. Stage copy is DRAFT for client review. */
+export const visionRoadmap = [
+  { stage: "Today", title: "Three endowments", body: "A masjid renovation, an after-school program, and transitional housing, funded and underway." },
+  { stage: "Next", title: "Grow what works", body: "More classrooms and students, more housing beds, and long-term upkeep for the masjid." },
+  { stage: "Tomorrow", title: "Community infrastructure", body: "Community-owned assets that sustain education, housing, health, and shared spaces for generations." },
+];
+
+/** Pillars with where each one stands today. */
+export const visionPillars = [
+  { title: "Education", icon: "book", body: "Islamic schooling and youth programs that build faith and opportunity.", status: "Active", note: "After-school program, 50 students" },
+  { title: "Housing", icon: "home", body: "Stable homes and fresh starts for families in transition.", status: "Active", note: "14-bed home at 100 Bolton Ave" },
+  { title: "Health", icon: "health", body: "Accessible, culturally aware care for the whole community.", status: "Planned", note: "Next pillar to launch" },
+  { title: "Community spaces", icon: "users", body: "Masjids and gathering places that keep the community connected.", status: "Active", note: "ISGD Masjid renovation" },
+];
+
+/** "From → To" per pillar for the vision variations. DRAFT copy for client review. */
+export const visionFromTo = [
+  { title: "Education", icon: "book", today: "After-school program for 50 students", tomorrow: "A full-time Islamic school" },
+  { title: "Housing", icon: "home", today: "14-bed transitional home", tomorrow: "Stable housing for every family in need" },
+  { title: "Health", icon: "health", today: "In planning", tomorrow: "A community health clinic" },
+  { title: "Community spaces", icon: "users", today: "ISGD Masjid renovation", tomorrow: "Masjids and centers across Greater Dayton" },
+];
+
+/**
+ * Client update (Figma comments, 28 Oct 2026): per-endowment content for the redesigned
+ * Active Endowments section, where each initiative gets its own layout.
+ */
+export const masjidOutlook = {
+  category: "Infrastructure",
+  name: "ISGD Masjid Renovation",
+  status: "Outlook completed",
+  image: "/images/project-mosque.png",
+  intro: "Interior and exterior renovation, fully outlined and ready to begin.",
+  steps: [
+    { title: "Renovation outlined", body: "Interior & exterior scope set.", done: true },
+    { title: "Quotes collected", body: "Contractor quotes in hand.", done: true },
+    { title: "Work outlined", body: "Renovation plan finalized.", done: true },
+    { title: "Trim package paid", body: "First package paid.", done: true },
+    { title: "Start date", body: "To be determined.", done: false },
+  ],
+};
+
+export const youthProgram = {
+  category: "Education",
+  name: "Islamic Youth Program",
+  subtitle: "2026 Islamic Youth Curriculum",
+  image: "/images/project-curriculum.png",
+  stats: [
+    { value: "3", label: "Class sessions every week" },
+    { value: "50", label: "Students attending at least once a week" },
+    { value: "2", label: "Class groups: ages 5–7 and 8–10" },
+    { value: "2", label: "Part-time teachers funded by the partnership" },
+  ],
+  groups: ["Ages 5–7", "Ages 8–10"],
+  extras: ["Monthly trip incentives", "Weekly snacks", "School supplies", "Printing & administrative help"],
+  allocated2026: 10000,
+  raised: 100000,
+  goal: 250000,
+};
+
+export const transitionalHousing = {
+  category: "Social services",
+  name: "Muslim Transitional Housing",
+  image: "/images/project-housing.png",
+  intro: "A short-term start and a long-term home, both already in motion.",
+  foundation: ["1 part-time program director hired", "3-month transitional outline & SOPs completed"],
+  phases: [
+    {
+      id: "short",
+      label: "Short term",
+      title: "Kickstart with a 4-bedroom rental",
+      facts: [
+        { value: "4", label: "Bedrooms available now" },
+        { value: "3 mo", label: "Transitional program" },
+      ],
+      points: ["Program director in place to run intake", "SOPs ready for every participant"],
+    },
+    {
+      id: "long",
+      label: "Long term",
+      title: "A 4-unit apartment building",
+      facts: [
+        { value: "19", label: "Bedrooms" },
+        { value: "6", label: "Bathrooms" },
+        { value: "0.6 mi", label: "From the ISGD" },
+      ],
+      points: [
+        "Building acquired",
+        "Construction started, est. completion May 1st, 2027",
+        "10% return funding partnerships available",
+      ],
+    },
+  ],
+  allocated2026: 10000,
+  raised: 100000,
+  goal: 250000,
+};
+
+export const externalAssistance = {
+  title: "External nonprofit assistance",
+  body: "Beyond our own endowments, we help other nonprofits with funding that fits their need.",
+  oneTime: {
+    title: "One-time funding assistance",
+    body: "Reach out for one-time funding options, such as:",
+    causes: ["PDM", "Palestine First Pediatric Rehabilitation Unit", "Syrian School Funding"],
+  },
+  longTerm: {
+    title: "Long-term sustainable funding",
+    body: "Muslim endowments earn double the offered return to help sustain ongoing costs, with special distribution options.",
+  },
+};

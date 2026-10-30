@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { NpHero } from "@/components/nonprofit/NpHero";
 import { FundingModel } from "@/components/nonprofit/FundingModel";
 import { ActiveEndowments } from "@/components/nonprofit/ActiveEndowments";
-import { Involvement, Vision } from "@/components/nonprofit/VisionInvolve";
+import { ProjectUpdates } from "@/components/nonprofit/VisionInvolve";
+import { VisionInvolved } from "@/components/nonprofit/VisionInvolved";
+import { CallToAction } from "@/components/sections/CallToAction";
 import { Footer } from "@/components/sections/Footer";
 
 export const metadata: Metadata = {
@@ -17,8 +19,10 @@ export default function NonprofitPage() {
       <NpHero />
       <FundingModel />
       <ActiveEndowments />
-      <Vision />
-      <Involvement />
+      <ProjectUpdates />
+      {/* Vision + Get involved merged: where we are going, then how you help get there */}
+      <VisionInvolved />
+      <CallToAction image="/images/project-curriculum.png" imagePosition="center 40%" />
       <Footer />
     </main>
   );

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import { CommunityHero } from "@/components/community/CommunityHero";
 import { AppFeatures } from "@/components/community/AppFeatures";
-import { BuiltForEveryone } from "@/components/community/BuiltForEveryone";
-import { PartnerBusinesses } from "@/components/community/PartnerBusinesses";
-import { LaunchWaitlist } from "@/components/community/LaunchWaitlist";
+import { AudienceIntro } from "@/components/community/AudienceIntro";
+import { ForCustomers } from "@/components/community/ForCustomers";
+import { ForBusinesses } from "@/components/community/ForBusinesses";
+import { ForNonprofits } from "@/components/community/ForNonprofits";
+import { ShoppingCenter } from "@/components/community/ShoppingCenter";
+import { JoinCommunity } from "@/components/community/JoinCommunity";
+import { CommunityFlow } from "@/components/community/CommunityFlow";
 import { Newsletter } from "@/components/community/Newsletter";
 import { Footer } from "@/components/sections/Footer";
 
@@ -18,9 +22,14 @@ export default function CommunityPage() {
     <main className="overflow-x-hidden">
       <CommunityHero />
       <AppFeatures />
-      <BuiltForEveryone />
-      <PartnerBusinesses />
-      <LaunchWaitlist />
+      {/* Client feedback (Oct 17): each audience gets its own pitch and design */}
+      <AudienceIntro />
+      <ForCustomers />
+      <ForBusinesses />
+      <ForNonprofits />
+      <ShoppingCenter />
+      <CommunityFlow />
+      <JoinCommunity />
       <Newsletter />
       <Footer />
     </main>

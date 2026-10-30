@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { giftAmounts, initiatives } from "@/data/nonprofit";
+import { giftAmounts, giftModel, initiatives } from "@/data/nonprofit";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Icon } from "@/components/community/Icon";
@@ -33,13 +33,14 @@ export function ActiveEndowments() {
       <Container className="flex flex-col gap-12">
         <SectionHeading
           eyebrow="Active endowments"
+          eyebrowTone="soft"
           title="Initiatives your gift keeps running"
           description="Each endowment is sized to cover an initiative's yearly overhead. Choose one to see where it stands and what your support sustains."
           descriptionClassName="max-w-[680px]"
         />
 
-        {/* Initiative tabs */}
-        <div role="tablist" aria-label="Initiatives" className="grid gap-4 md:grid-cols-3">
+        {/* Initiative tabs: photo cards with the endowment target large (client doc) */}
+        <div role="tablist" aria-label="Initiatives" className="grid gap-5 md:grid-cols-3">
           {initiatives.map((x) => {
             const on = x.id === activeId;
             const p = Math.round((x.allocated / x.allocationGoal) * 100);
@@ -49,21 +50,27 @@ export function ActiveEndowments() {
                 role="tab"
                 aria-selected={on}
                 onClick={() => setActiveId(x.id)}
-                className={`flex min-w-0 items-center gap-4 rounded-[18px] p-3 text-left transition ${
-                  on ? "bg-primary text-white shadow-[0_20px_40px_-25px_rgba(1,42,28,0.8)]" : "bg-cream-light text-primary hover:bg-cream"
+                className={`group flex min-w-0 flex-col overflow-hidden rounded-[22px] text-left transition ${
+                  on ? "bg-primary text-white shadow-[0_24px_50px_-28px_rgba(1,42,28,0.9)] ring-2 ring-primary" : "bg-white text-primary ring-1 ring-[#e8dfcc] hover:-translate-y-0.5 hover:ring-beige"
                 }`}
               >
-                <span className="relative size-16 shrink-0 overflow-hidden rounded-[12px]">
-                  <Image src={x.image} alt="" fill sizes="64px" className="object-cover" />
+                <span className="relative h-[150px] w-full overflow-hidden">
+                  <Image src={x.image} alt="" fill sizes="(min-width: 768px) 400px, 100vw" className="object-cover transition duration-500 group-hover:scale-[1.04]" />
+                  <span className="absolute top-3 left-3 rounded-full bg-cream px-2.5 py-1 text-[11px] font-semibold tracking-[0.1em] text-primary uppercase">{x.category}</span>
                 </span>
-                <span className="min-w-0 flex-1">
-                  <span className={`block text-[11px] tracking-[0.12em] uppercase ${on ? "text-gold" : "text-gold"}`}>{x.category}</span>
-                  <span className="block truncate font-display text-[19px] leading-tight">{x.name}</span>
-                  <span className={`mt-1 block text-[12px] ${on ? "text-cream/70" : "text-neutral-500"}`}>
-                    {usd(x.endowmentTarget)} endowment goal
+                <span className="flex flex-col gap-3 p-5">
+                  <span className="font-display text-[21px] leading-tight">{x.name}</span>
+                  <span>
+                    <span className={`block text-[11px] font-semibold tracking-[0.1em] uppercase ${on ? "text-beige" : "text-beige-ink"}`}>Endowment target</span>
+                    <span className="block font-display text-[40px] leading-none">{usd(x.endowmentTarget)}</span>
+                  </span>
+                  <span className="flex items-center gap-3">
+                    <span className={`h-1.5 flex-1 overflow-hidden rounded-full ${on ? "bg-white/15" : "bg-primary/10"}`}>
+                      <span className={`block h-full rounded-full ${on ? "bg-beige" : "bg-[#4f8f6b]"}`} style={{ width: `${Math.min(p, 100)}%` }} />
+                    </span>
+                    <span className={`text-[13px] font-semibold ${on ? "text-beige" : "text-primary/70"}`}>{p}% this year</span>
                   </span>
                 </span>
-                <span className={`font-display text-[18px] ${on ? "text-gold" : "text-primary/60"}`}>{p}%</span>
               </button>
             );
           })}
@@ -105,26 +112,25 @@ export function ActiveEndowments() {
               <p className="mt-2 text-[13px] text-[#2f6b4b]">{pct >= 100 ? "This year's allocation is fully funded." : `${pct}% of this year's allocation funded.`}</p>
             </div>
 
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-[16px] bg-primary p-5 text-cream">
+                <p className="text-[11px] font-semibold tracking-[0.1em] text-beige uppercase">Yearly overhead it sustains</p>
+                <p className="mt-1 font-display text-[34px] leading-none">{usd(it.endowmentTarget * giftModel.rate)}</p>
+                <p className="mt-1.5 text-[13px] text-[#c9d3cd]">every year, once fully funded*</p>
+              </div>
+              <div className="rounded-[16px] bg-beige-bg p-5">
+                <p className="text-[11px] font-semibold tracking-[0.1em] text-beige-ink uppercase">Your {usd(gift)} gift adds</p>
+                <p className="mt-1 font-display text-[34px] leading-none text-primary">{usd(gift * giftModel.rate)}/yr</p>
+                <p className="mt-1.5 text-[13px] text-neutral-600">to this initiative, for as long as it runs*</p>
+              </div>
+            </div>
+
             <div className="flex gap-3">
-              <Icon name="heart" size={20} className="mt-0.5 shrink-0 text-gold" />
+              <Icon name="heart" size={20} className="mt-0.5 shrink-0 text-beige-ink" />
               <p className="text-[16px] leading-[1.55] text-primary">
                 <span className="font-medium">What your gift sustains: </span>
                 {it.sustains}
               </p>
-            </div>
-
-            <div>
-              <p className="text-[12px] tracking-[0.14em] text-neutral-500 uppercase">Milestones</p>
-              <ol className="mt-3 flex flex-col gap-3 border-l border-gold/40 pl-5">
-                {it.milestones.map((m) => (
-                  <li key={m} className="relative text-[15px] leading-[1.5] text-neutral-700">
-                    <span className="absolute top-1 -left-[29px] flex size-4 items-center justify-center rounded-full bg-gold text-white">
-                      <Icon name="check" size={10} />
-                    </span>
-                    {m}
-                  </li>
-                ))}
-              </ol>
             </div>
 
             {/* Give */}
@@ -147,11 +153,12 @@ export function ActiveEndowments() {
               </div>
               <a
                 href="#involved"
-                className="group mt-1 inline-flex w-fit items-center gap-2 rounded-[8px] bg-gold px-6 py-3.5 text-[16px] font-medium text-white transition hover:brightness-95"
+                className="group mt-1 inline-flex w-fit items-center gap-2 rounded-[8px] bg-beige-btn px-6 py-3.5 text-[16px] font-medium text-white transition hover:brightness-95"
               >
                 Support with {usd(gift)}
                 <Icon name="arrow" size={18} className="transition-transform group-hover:translate-x-0.5" />
               </a>
+              <p className="text-[12px] text-neutral-500">*Illustrative, assuming a {Math.round(giftModel.rate * 100)}% annual return paid out. Returns are not guaranteed.</p>
             </div>
           </div>
         </div>
